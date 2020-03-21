@@ -1,1 +1,118 @@
+<html>
+  <head>
+    <title>Stocker</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="logo/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="logo/logo-small.png">
+      <a href="index.html">home page</a>
+      <a href="">categories</a>
+      <div class="navbutton" class="login">
+        <button onclick="login()" class="login">log in</button>
+        <div class="dropdown login" id="login" >
+          <form>
+            Login: <input type="text" class="login"><br>
+            Password: <input type="password" class="login"><br>
+            <button type="button" class="login">log in</button>
+          </form>
+        </div>
+      </div>
+      <div class="navbutton" class="register">
+        <button onclick="register()" class="register">register</button>
+        <div class="dropdown register" id="register">
+          <form>
+            Login: <input type="text" id="login" class="register"><br>
+            Password: <input type="password" id="password" class="register"><br>
+            Confirm password: <input type="password" class="register"><br>
+            Email: <input type="text" id="email" class="register"><br>
+            <div id="passwCheck"></div>
+            <button type="button" class="register" onclick="checkPassword()">Register</button>
 
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="bgPhoto">
+        <img src="database/9.jpg">
+      </div>
+      <div class="searchBar">
+        <input type="text">
+      </div>
+    </div>
+
+
+    <script>
+    var log = document.querySelector("#login");
+    var reg = document.querySelector("#register");
+
+    //  hide/show buttons in navbar
+    function login(){
+      if (reg.classList.contains("show")) {
+        reg.classList.toggle("show");
+        log.classList.toggle("show");
+        }
+      else log.classList.toggle("show");
+    }
+    function register(){
+      if (log.classList.contains("show")) {
+        log.classList.toggle("show");
+        reg.classList.toggle("show");
+        }
+      else reg.classList.toggle("show");
+    }
+
+    //  outside click closes dropdown menus
+
+    window.onclick = function(event){
+      if (event.target.parentNode == log || event.target == log || event.target.matches(".login")) {
+      }
+      else if (event.target.parentNode == reg || event.target == reg || event.target.matches(".register")) {
+      }
+      else {
+        log.classList.remove("show")
+        reg.classList.remove("show")
+      }
+    }
+
+    //  password strength checker
+    /*function checkPassword(){
+      let digitFlag = 0
+      var password = document.querySelector("#password").value
+      for (let i=0;i<password.length;i++){
+        if(password[i] >= '0' && password[i]<='9'){
+          digitFlag++
+        }
+      }
+      console.log(digitFlag)
+      console.log(password.length)
+      if(digitFlag<1 || password.length<8) {
+        document.querySelector("#passwCheck").innerHTML="hasło musi zawierać 8 znaków i 1 cyfrę"
+        }
+      else {
+        document.querySelector("#passwCheck").innerHTML="siła hasła: słabe"
+        }
+    }
+        */
+
+    //background img changer
+
+    setInterval(imgChanger, 10000)
+    var i=1;
+    function imgChanger(){
+      document.querySelector(".bgPhoto").innerHTML="<img src=\"database/"+ i +".jpg\">"
+      if(i<9) {
+        i++
+      }
+      else i=1
+     }
+    </script>
+
+
+
+
+  </body>
+</html>
