@@ -1,2 +1,0 @@
-# mattcudzik.github.io
-Stocker
