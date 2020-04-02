@@ -33,17 +33,21 @@ window.onclick = function(event){
 
   let galleryClose = document.querySelector("#galleryPopupClose")
   galleryClose.onclick = function(){
-      document.querySelector(".img_popup").classList.toggle("hide")
+      document.querySelector(".img_popup").classList.toggle("show")
 
   }
-  window.onclick = function close(event){
-    if(event.target == document.querySelector(".img_popup")) {
-      document.querySelector(".img_popup").classList.toggle("hide")
-    }
+  document.querySelector(".img_popup").onclick = function(event){
+      if(event.target.matches(".img_popup")){
+        document.querySelector(".img_popup").classList.toggle("show")
+      }
   }
+
 //popup gallery open
+  document.querySelector(".gallery").onclick = function(event){
+      document.querySelector(".img_popup").classList.toggle("show")
+      document.querySelector(".img_popup_photo").innerHTML=event.originalTarget.outerHTML
+  }
 
-    //document.querySelector(".img_popup_photo").innerHTML=event.originalTarget.outerHTML
 
 
 //  password strength checker
